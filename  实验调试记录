@@ -2,5 +2,19 @@
 pip install torch==1.7.0+cu110 torchvision==0.8.0+cu110 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
 
 2.运行test：
-python test.py --dataroot /home/hzc/Datas/UnderwaterEnhancementDatabase/HICRD/HICRD_unpaired --name HICRD_small --preprocess scale_width --load_size 1680
--- 运行成功
+(1)python test.py --dataroot /home/hzc/Datas/UnderwaterEnhancementDatabase/HICRD/HICRD_unpaired --name HICRD_small --preprocess scale_width --load_size 1680
+(2)checkpoints在readme中有下载链接
+-- 运行成功】
+(3) 修改checkpoints路径以下两个参数：
+parser.add_argument('--name', type=str, default='experiment_name', help='name of the experiment. It decides where to store samples and models')
+parser.add_argument('--epoch', type=str, default='100', help='which epoch to load? set to latest to use latest cached model')
+
+3.运行train：
+(1)python train.py --dataroot /home/hzc/Datas/UnderwaterEnhancementDatabase/HICRD/HICRD_unpaired --name HICRD_small
+(2)测算时间：开始2024/11/6 21:30`
+(3)epoch设置根据两个参数来决定：
+n_epochs: 50，表示进行 50 个 epochs 的训练。
+n_epochs_decay: 50，表示在接下来的 50 个 epochs 中逐渐减少学习率。
+
+100 epoch的训练时间要花费24h左右
+
